@@ -1,0 +1,3 @@
+/home/anton202/lafore_book_exs/build/CMakeFiles/rebuild_cache.dir
+/home/anton202/lafore_book_exs/build/CMakeFiles/edit_cache.dir
+/home/anton202/lafore_book_exs/build/CMakeFiles/laf.dir

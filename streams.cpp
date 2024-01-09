@@ -386,11 +386,12 @@ employee_type employee::get_type()
 }
 
 //Записать все объекты, хранящиеся в памяти, в файл
-void employee::write()
+void employee::write()                                // сперва записываем тип объекта, затем сам объект
 {
   int size;
   cout << "Идет запись " << n << " работников.\n";
   ofstream ouf;
+  employee_type etype;
   ouf.open("EMPLOY.DAT", ios::trunc | ios::binary);   // ios::trunc - старое содержимое удаляется
 
   if(!ouf){ 
@@ -400,7 +401,10 @@ void employee::write()
 
   for(int j=0; j<n; j++)                              // Для каждого объекта
   {
-    switch(arrap[j]->get_type())                                      
+    etype = arrap[j]->get_type();                     // получаем тип объекта
+    ouf.write( (char*)&etype, sizeof(etype) );        // записываем тип объекта перед самим объектом
+
+    switch(etype)                                      
     {
       case tmanager: size=sizeof(manager); break;
       case tscientist: size=sizeof(scientist); break;
@@ -426,10 +430,7 @@ void employee::read()
   n = 0;                                        // В памяти работников нет
   while(true)
   {
-    inf.read( (char*)&etype, sizeof(etype) );   // чтение типа следующего работника
-    
-
-    
+    inf.read( (char*)&etype, sizeof(etype) );   // чтение типа следующего работника    
     if( inf.eof() )                             // выход из цикла по EOF
       break;
     if(!inf)                                    // ошибка чтения типа

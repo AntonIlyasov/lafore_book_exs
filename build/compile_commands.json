@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/home/anton202/lafore_book_exs/build",
+  "command": "/usr/bin/g++   -g -o CMakeFiles/laf.dir/streams.cpp.o -c /home/anton202/lafore_book_exs/streams.cpp",
+  "file": "/home/anton202/lafore_book_exs/streams.cpp"
+}
+]

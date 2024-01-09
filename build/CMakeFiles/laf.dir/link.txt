@@ -1,1 +1,1 @@
-/usr/bin/c++    -rdynamic CMakeFiles/laf.dir/main.cpp.o  -o laf 
+/usr/bin/g++ -g -rdynamic CMakeFiles/laf.dir/streams.cpp.o -o laf 

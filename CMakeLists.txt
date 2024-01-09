@@ -3,6 +3,6 @@ project(lafore_book_exs)
 
 
 
-ADD_EXECUTABLE(laf main.cpp)
+ADD_EXECUTABLE(laf streams.cpp)
 
 

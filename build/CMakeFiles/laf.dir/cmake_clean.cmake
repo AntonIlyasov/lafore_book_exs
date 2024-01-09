@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/laf.dir/main.cpp.o"
+  "CMakeFiles/laf.dir/streams.cpp.o"
+  "CMakeFiles/laf.dir/streams.cpp.o.d"
   "laf"
   "laf.pdb"
 )

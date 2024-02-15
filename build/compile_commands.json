@@ -1,7 +1,12 @@
 [
 {
   "directory": "/home/anton202/lafore_book_exs/build",
-  "command": "/usr/bin/g++   -g -o CMakeFiles/laf.dir/streams.cpp.o -c /home/anton202/lafore_book_exs/streams.cpp",
-  "file": "/home/anton202/lafore_book_exs/streams.cpp"
+  "command": "/usr/bin/g++   -g -o CMakeFiles/laf.dir/multi.cpp.o -c /home/anton202/lafore_book_exs/multi.cpp",
+  "file": "/home/anton202/lafore_book_exs/multi.cpp"
+},
+{
+  "directory": "/home/anton202/lafore_book_exs/build",
+  "command": "/usr/bin/g++   -g -o CMakeFiles/laf.dir/verylong.cpp.o -c /home/anton202/lafore_book_exs/verylong.cpp",
+  "file": "/home/anton202/lafore_book_exs/verylong.cpp"
 }
 ]

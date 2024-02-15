@@ -129,29 +129,53 @@ laf/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/laf.dir/build.make CMakeFiles/laf.dir/build
 .PHONY : laf/fast
 
-streams.o: streams.cpp.o
-.PHONY : streams.o
+multi.o: multi.cpp.o
+.PHONY : multi.o
 
 # target to build an object file
-streams.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/laf.dir/build.make CMakeFiles/laf.dir/streams.cpp.o
-.PHONY : streams.cpp.o
+multi.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/laf.dir/build.make CMakeFiles/laf.dir/multi.cpp.o
+.PHONY : multi.cpp.o
 
-streams.i: streams.cpp.i
-.PHONY : streams.i
+multi.i: multi.cpp.i
+.PHONY : multi.i
 
 # target to preprocess a source file
-streams.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/laf.dir/build.make CMakeFiles/laf.dir/streams.cpp.i
-.PHONY : streams.cpp.i
+multi.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/laf.dir/build.make CMakeFiles/laf.dir/multi.cpp.i
+.PHONY : multi.cpp.i
 
-streams.s: streams.cpp.s
-.PHONY : streams.s
+multi.s: multi.cpp.s
+.PHONY : multi.s
 
 # target to generate assembly for a file
-streams.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/laf.dir/build.make CMakeFiles/laf.dir/streams.cpp.s
-.PHONY : streams.cpp.s
+multi.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/laf.dir/build.make CMakeFiles/laf.dir/multi.cpp.s
+.PHONY : multi.cpp.s
+
+verylong.o: verylong.cpp.o
+.PHONY : verylong.o
+
+# target to build an object file
+verylong.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/laf.dir/build.make CMakeFiles/laf.dir/verylong.cpp.o
+.PHONY : verylong.cpp.o
+
+verylong.i: verylong.cpp.i
+.PHONY : verylong.i
+
+# target to preprocess a source file
+verylong.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/laf.dir/build.make CMakeFiles/laf.dir/verylong.cpp.i
+.PHONY : verylong.cpp.i
+
+verylong.s: verylong.cpp.s
+.PHONY : verylong.s
+
+# target to generate assembly for a file
+verylong.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/laf.dir/build.make CMakeFiles/laf.dir/verylong.cpp.s
+.PHONY : verylong.cpp.s
 
 # Help Target
 help:
@@ -162,9 +186,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... laf"
-	@echo "... streams.o"
-	@echo "... streams.i"
-	@echo "... streams.s"
+	@echo "... multi.o"
+	@echo "... multi.i"
+	@echo "... multi.s"
+	@echo "... verylong.o"
+	@echo "... verylong.i"
+	@echo "... verylong.s"
 .PHONY : help
 
 

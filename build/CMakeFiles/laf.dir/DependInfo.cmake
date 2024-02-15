@@ -8,7 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/anton202/lafore_book_exs/streams.cpp" "CMakeFiles/laf.dir/streams.cpp.o" "gcc" "CMakeFiles/laf.dir/streams.cpp.o.d"
+  "/home/anton202/lafore_book_exs/multi.cpp" "CMakeFiles/laf.dir/multi.cpp.o" "gcc" "CMakeFiles/laf.dir/multi.cpp.o.d"
+  "/home/anton202/lafore_book_exs/verylong.cpp" "CMakeFiles/laf.dir/verylong.cpp.o" "gcc" "CMakeFiles/laf.dir/verylong.cpp.o.d"
   )
 
 # Targets to which this target links.

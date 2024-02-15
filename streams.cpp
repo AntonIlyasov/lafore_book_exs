@@ -257,237 +257,320 @@ using namespace std;
 // }
 
 //  typeid()!!!!!!!!!!!!!!!!!!!!!!!!!!
-const int LEN = 32;
-const int MAXEM = 100;
-enum employee_type {tmanager, tscientist, tlaborer};
+// const int LEN = 32;
+// const int MAXEM = 100;
+// enum employee_type {tmanager, tscientist, tlaborer};
 
-class employee{
+// class employee{
+// private:
+//   char name[LEN];           // фамилия работника
+//   unsigned long number;     // номер работника
+//   static int n;             // текущее число работников                 - общее для всех
+//   static employee* arrap[]; // массив указателей на класс работников    - общее для всех
+
+// public:
+//   virtual void getdata(){
+//     cin.ignore(10, '\n');
+//     cout << " Введите фамилию: "; cin >> name;
+//     cout << " Введите номер: "; cin >> number;
+//   }
+
+//   virtual void putdata(){
+//     cout << "\n Фамилия: " << name;
+//     cout << "\n Номер: " << number;
+//   }
+
+//   employee_type get_type();         // получить тип
+//   static void add();                // добавить работника
+//   static void display();            // вывести данные обо всех
+//   static void read();               // чтение из файла
+//   static void write();              // запись в файл
+// };
+
+// int employee::n = 0;
+// employee* employee::arrap[MAXEM];   // массив указателей на класс работников
+
+// class manager : public employee
+// {
+// private:
+//   char title[LEN];    // титул ("вице-президент" и т. п.)
+//   double dues;        // Налоги гольф-клуба
+// public:
+//   void getdata()
+//   {
+//     employee::getdata();
+//     cout << " Введите титул: ";   cin >> title;
+//     cout << " Введите налоги: ";  cin >> dues;
+//   }
+//   void putdata()
+//   {
+//     employee::putdata();
+//     cout << "\n Титул: " << title;
+//     cout << "\n Налоги гольф-клуба: " << dues;
+//   }
+// };
+
+// class scientist : public employee
+// {
+// private:
+//   int pubs;
+// public:
+//   void getdata()
+//   {
+//     employee::getdata();
+//     cout << " Введите число публикаций: "; cin >> pubs;
+//   }
+//   void putdata()
+//   {
+//     employee::putdata();
+//     cout << "\n Число публикаций: " << pubs;
+//   }
+// };
+
+// class laborer : public employee
+// {
+// };
+
+// //добавить работника в список (хранится в ОП)
+// void employee::add()
+// {
+//   char ch;
+//   cout << "'m' для добавления менеджера"
+//         "\n's' для добавления ученого"
+//         "\n'l' для добавления рабочего"
+//         "\nВаш выбор: ";
+//   cin >> ch;
+//   switch(ch)
+//   {
+//     //создать объект указанного типа
+//     case 'm': arrap[n] = new manager; break;
+//     case 's': arrap[n] = new scientist; break;
+//     case 'l': arrap[n] = new laborer; break;
+//     default: cout << "\nНеизвестный тип работника\n"; return;
+//   }
+//   arrap[n++]->getdata(); //Получить данные от пользователя
+// }
+
+// //Вывести данные обо всех работниках
+// void employee::display()
+// {
+//   for(int j = 0; j < employee::n; j++)
+//   {
+//     cout << (j+1);
+//     // вывести номер
+//     switch( arrap[j]->get_type() ) //вывести тип
+//     {
+//       case tmanager: cout << ". Тип: Менеджер"; break;
+//       case tscientist: cout << ". Тип: Ученый"; break;
+//       case tlaborer: cout << ". Тип: Рабочий"; break;
+//       default: cout << ". Неизвестный тип";
+//     }
+//     arrap[j]->putdata(); // Вывод данных
+//     cout << endl;
+//   }
+// }
+
+// //Возврат типа объекта
+// employee_type employee::get_type()
+// {
+//   if( typeid(*this) == typeid(manager) )
+//     return tmanager;
+//   else if( typeid(*this)==typeid(scientist) )
+//     return tscientist;
+//   else if( typeid(*this)==typeid(laborer) )
+//     return tlaborer;
+//   else {
+//     cerr << "\nНеправильный тип работника";
+//     exit(1);
+//   }
+// }
+
+// //Записать все объекты, хранящиеся в памяти, в файл
+// void employee::write()                                // сперва записываем тип объекта, затем сам объект
+// {
+//   int size;
+//   cout << "Идет запись " << n << " работников.\n";
+//   ofstream ouf;
+//   employee_type etype;
+//   ouf.open("EMPLOY.DAT", ios::trunc | ios::binary);   // ios::trunc - старое содержимое удаляется
+
+//   if(!ouf){ 
+//     cout << "\nНевозможно открыть файл\n";
+//     return;
+//   }
+
+//   for(int j=0; j<n; j++)                              // Для каждого объекта
+//   {
+//     etype = arrap[j]->get_type();                     // получаем тип объекта
+//     ouf.write( (char*)&etype, sizeof(etype) );        // записываем тип объекта перед самим объектом
+
+//     switch(etype)                                      
+//     {
+//       case tmanager: size=sizeof(manager); break;
+//       case tscientist: size=sizeof(scientist); break;
+//       case tlaborer: size=sizeof(laborer); break;
+//     }
+//     ouf.write( (char*)(arrap[j]), size );               // запись объекта employee в файл
+//     if(!ouf){
+//       cout << "\nЗапись в файл невозможна\n";
+//       return;
+//     }
+//   }
+// }
+
+// //чтение всех данных из файла в память
+// void employee::read()
+// {
+//   int size;                                     // размер объекта employee
+//   employee_type etype;                          // тип работника
+//   ifstream inf;                                 // открыть ifstream в двоичном виде
+//   inf.open("EMPLOY.DAT", ios::binary);
+//   if(!inf)
+//     { cout << "\nНевозможно открыть файл\n"; return; }
+//   n = 0;                                        // В памяти работников нет
+//   while(true)
+//   {
+//     inf.read( (char*)&etype, sizeof(etype) );   // чтение типа следующего работника    
+//     if( inf.eof() )                             // выход из цикла по EOF
+//       break;
+//     if(!inf)                                    // ошибка чтения типа
+//       { cout << "\nНевозможно чтение типа\n"; return; }
+//     switch(etype)                               // создать нового работника корректного типа
+//     {
+//       case tmanager:
+//         arrap[n] = new manager;
+//         size=sizeof(manager);
+//         break;
+//       case tscientist:
+//         arrap[n] = new scientist;
+//         size=sizeof(scientist);
+//         break;
+//       case tlaborer:
+//         arrap[n] = new laborer;
+//         size=sizeof(laborer);
+//         break;
+//       default:
+//         cout << "\nНеизвестный тип в файле\n";
+//         return;
+//     }
+//     inf.read( (char*)arrap[n], size );          // чтение данных из файла
+//     if(!inf)
+//       { cout << "\nЧтение данных из файла невозможно\n"; return; }
+//     n++;
+//   }
+//   cout << "Идет чтение " << n << " работников\n";
+// }
+
+// int main(){
+//   int a = 5;
+//   char ch;
+//   while(true)
+//   {
+//     cout << "'a' – добавление сведений о работнике"
+//     "\n'd' - вывести сведения обо всех работниках"
+//     "\n'w' – записать все данные в файл"
+//     "\n'r' – прочитать все данные из файла"
+//     "\n'x' - выход"
+//     "\nВаш выбор: ";
+//     cin >> ch;
+//     switch(ch)
+//     {
+//       case 'a':
+//       employee::add(); break;
+//       case 'd':
+//       employee::display(); break;
+//       case 'w':
+//       employee::write(); break;
+//       case 'r':
+//       employee::read(); break;
+//       case 'x': exit(0);
+//       default: cout << "\nНеизвестная команда";
+//     }
+//   }
+//   return 0;
+// }
+
+//Перегрузка cout и cin!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// class Distance
+// {
+// private:
+//   int feet;
+//   float inches;
+// public:
+//   Distance() : feet(0), inches(0.0) {}
+//   Distance(int ft, float in) : feet(ft), inches(in) {}
+//   friend istream& operator >> (istream& s, Distance& d);
+//   friend ostream& operator << (ostream& s, Distance& d);
+// };
+
+// istream& operator >> (istream& s, Distance& d) //получить значение от пользователя
+// {
+  // cout << "\nВведите футы: "; s >> d.feet; // используется перегруженный оператор >>
+  // cout << "Введите дюймы: "; s >> d.inches;
+  // return s;
+// }
+
+// ostream& operator << (ostream& s, Distance& d)  // вывести расстояние
+// {
+//   s << d.feet << "\'-" << d.inches << '\"';     // используется перегруженный оператор <<
+//   return s;
+// }
+
+// int main()
+// {
+//   Distance dist1, dist2;
+//   Distance dist3(11, 6.25);
+//   cout << "\nВведите два значения расстояний:";
+//   cin >> dist1 >> dist2;                                      // Получить значения от пользователя
+//   cout << "\ndist1 = " << dist1 << "\ndist2 = " << dist2;     // вывод расстояний
+//   cout << "\ndist3 = " << dist3 << endl;
+//   return 0;
+// }
+
+//Перегрузка << и >> для файлов!!!!!!!!!!!!!!!!!!!!!1
+class Distance{
 private:
-  char name[LEN];           // фамилия работника
-  unsigned long number;     // номер работника
-  static int n;             // текущее число работников                 - общее для всех
-  static employee* arrap[]; // массив указателей на класс работников    - общее для всех
-
+  int feet;
+  float inches;
 public:
-  virtual void getdata(){
-    cin.ignore(10, '\n');
-    cout << " Введите фамилию: "; cin >> name;
-    cout << " Введите номер: "; cin >> number;
-  }
-
-  virtual void putdata(){
-    cout << "\n Фамилия: " << name;
-    cout << "\n Номер: " << number;
-  }
-
-  employee_type get_type();         // получить тип
-  static void add();                // добавить работника
-  static void display();            // вывести данные обо всех
-  static void read();               // чтение из файла
-  static void write();              // запись в файл
+  Distance() : feet(0), inches(0.0) {}
+  Distance(int ft, float in) : feet(ft), inches(in) {}
+  friend istream& operator >> (istream& s, Distance& d);
+  friend ostream& operator << (ostream& s, Distance& d);
 };
 
-int employee::n = 0;
-employee* employee::arrap[MAXEM];   // массив указателей на класс работников
-
-class manager : public employee
+istream& operator >> (istream& s, Distance& d) // получить данные из файла или с клавиатуры
 {
-private:
-  char title[LEN];    // титул ("вице-президент" и т. п.)
-  double dues;        // Налоги гольф-клуба
-public:
-  void getdata()
-  {
-    employee::getdata();
-    cout << " Введите титул: ";   cin >> title;
-    cout << " Введите налоги: ";  cin >> dues;
-  }
-  void putdata()
-  {
-    employee::putdata();
-    cout << "\n Титул: " << title;
-    cout << "\n Налоги гольф-клуба: " << dues;
-  }
-};
+  cout << "\nВведите футы: "; s >> d.feet; // используется перегруженный оператор >>
+  cout << "Введите дюймы: "; s >> d.inches;
+  return s;
+}
 
-class scientist : public employee
+ostream& operator << (ostream& s, Distance& d) // послать данные типа Distance в файл или на экран
 {
-private:
-  int pubs;
-public:
-  void getdata()
-  {
-    employee::getdata();
-    cout << " Введите число публикаций: "; cin >> pubs;
-  }
-  void putdata()
-  {
-    employee::putdata();
-    cout << "\n Число публикаций: " << pubs;
-  }
-};
+  s << d.feet << "\'-" << d.inches << '\"';
+  return s;
+}
 
-class laborer : public employee
-{
-};
-
-//добавить работника в список (хранится в ОП)
-void employee::add()
-{
+int main() {
   char ch;
-  cout << "'m' для добавления менеджера"
-        "\n's' для добавления ученого"
-        "\n'l' для добавления рабочего"
-        "\nВаш выбор: ";
-  cin >> ch;
-  switch(ch)
-  {
-    //создать объект указанного типа
-    case 'm': arrap[n] = new manager; break;
-    case 's': arrap[n] = new scientist; break;
-    case 'l': arrap[n] = new laborer; break;
-    default: cout << "\nНеизвестный тип работника\n"; return;
-  }
-  arrap[n++]->getdata(); //Получить данные от пользователя
-}
-
-//Вывести данные обо всех работниках
-void employee::display()
-{
-  for(int j = 0; j < employee::n; j++)
-  {
-    cout << (j+1);
-    // вывести номер
-    switch( arrap[j]->get_type() ) //вывести тип
-    {
-      case tmanager: cout << ". Тип: Менеджер"; break;
-      case tscientist: cout << ". Тип: Ученый"; break;
-      case tlaborer: cout << ". Тип: Рабочий"; break;
-      default: cout << ". Неизвестный тип";
-    }
-    arrap[j]->putdata(); // Вывод данных
-    cout << endl;
-  }
-}
-
-//Возврат типа объекта
-employee_type employee::get_type()
-{
-  if( typeid(*this) == typeid(manager) )
-    return tmanager;
-  else if( typeid(*this)==typeid(scientist) )
-    return tscientist;
-  else if( typeid(*this)==typeid(laborer) )
-    return tlaborer;
-  else {
-    cerr << "\nНеправильный тип работника";
-    exit(1);
-  }
-}
-
-//Записать все объекты, хранящиеся в памяти, в файл
-void employee::write()                                // сперва записываем тип объекта, затем сам объект
-{
-  int size;
-  cout << "Идет запись " << n << " работников.\n";
-  ofstream ouf;
-  employee_type etype;
-  ouf.open("EMPLOY.DAT", ios::trunc | ios::binary);   // ios::trunc - старое содержимое удаляется
-
-  if(!ouf){ 
-    cout << "\nНевозможно открыть файл\n";
-    return;
-  }
-
-  for(int j=0; j<n; j++)                              // Для каждого объекта
-  {
-    etype = arrap[j]->get_type();                     // получаем тип объекта
-    ouf.write( (char*)&etype, sizeof(etype) );        // записываем тип объекта перед самим объектом
-
-    switch(etype)                                      
-    {
-      case tmanager: size=sizeof(manager); break;
-      case tscientist: size=sizeof(scientist); break;
-      case tlaborer: size=sizeof(laborer); break;
-    }
-    ouf.write( (char*)(arrap[j]), size );               // запись объекта employee в файл
-    if(!ouf){
-      cout << "\nЗапись в файл невозможна\n";
-      return;
-    }
-  }
-}
-
-//чтение всех данных из файла в память
-void employee::read()
-{
-  int size;                                     // размер объекта employee
-  employee_type etype;                          // тип работника
-  ifstream inf;                                 // открыть ifstream в двоичном виде
-  inf.open("EMPLOY.DAT", ios::binary);
-  if(!inf)
-    { cout << "\nНевозможно открыть файл\n"; return; }
-  n = 0;                                        // В памяти работников нет
-  while(true)
-  {
-    inf.read( (char*)&etype, sizeof(etype) );   // чтение типа следующего работника    
-    if( inf.eof() )                             // выход из цикла по EOF
-      break;
-    if(!inf)                                    // ошибка чтения типа
-      { cout << "\nНевозможно чтение типа\n"; return; }
-    switch(etype)                               // создать нового работника корректного типа
-    {
-      case tmanager:
-        arrap[n] = new manager;
-        size=sizeof(manager);
-        break;
-      case tscientist:
-        arrap[n] = new scientist;
-        size=sizeof(scientist);
-        break;
-      case tlaborer:
-        arrap[n] = new laborer;
-        size=sizeof(laborer);
-        break;
-      default:
-        cout << "\nНеизвестный тип в файле\n";
-        return;
-    }
-    inf.read( (char*)arrap[n], size );          // чтение данных из файла
-    if(!inf)
-      { cout << "\nЧтение данных из файла невозможно\n"; return; }
-    n++;
-  }
-  cout << "Идет чтение " << n << " работников\n";
-}
-
-int main(){
-  int a = 5;
-  char ch;
-  while(true)
-  {
-    cout << "'a' – добавление сведений о работнике"
-    "\n'd' - вывести сведения обо всех работниках"
-    "\n'w' – записать все данные в файл"
-    "\n'r' – прочитать все данные из файла"
-    "\n'x' - выход"
-    "\nВаш выбор: ";
+  Distance dist1;
+  ofstream ofile;
+  ofile.open("DIST.DAT", ios::binary);
+  do {
+    cout << "\nВведите расстояние: ";
+    cin >> dist1;                               // получить данные от пользователя
+    ofile << dist1;                             // записать их в выходной поток
+    cout << "Продолжать (y/n)? ";
     cin >> ch;
-    switch(ch)
-    {
-      case 'a':
-      employee::add(); break;
-      case 'd':
-      employee::display(); break;
-      case 'w':
-      employee::write(); break;
-      case 'r':
-      employee::read(); break;
-      case 'x': exit(0);
-      default: cout << "\nНеизвестная команда";
-    }
+  } while(ch != 'n');
+  ofile.close();                                // закрыть выходной поток
+  ifstream ifile;
+  ifile.open("DIST.DAT", ios::binary);
+  cout << "\nСодержимое файла:\n";
+  while(ifile) {
+    ifile >> dist1;                             // чтение данных из потока
+    cout << "Расстояние = " << dist1 <<endl;    //вывод расстояний
   }
   return 0;
 }
-
-

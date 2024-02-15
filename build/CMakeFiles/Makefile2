@@ -81,12 +81,12 @@ clean: CMakeFiles/laf.dir/clean
 CMakeFiles/laf.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/laf.dir/build.make CMakeFiles/laf.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/laf.dir/build.make CMakeFiles/laf.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/anton202/lafore_book_exs/build/CMakeFiles --progress-num=1,2 "Built target laf"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/anton202/lafore_book_exs/build/CMakeFiles --progress-num=1,2,3 "Built target laf"
 .PHONY : CMakeFiles/laf.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/laf.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/anton202/lafore_book_exs/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/anton202/lafore_book_exs/build/CMakeFiles 3
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/laf.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/anton202/lafore_book_exs/build/CMakeFiles 0
 .PHONY : CMakeFiles/laf.dir/rule

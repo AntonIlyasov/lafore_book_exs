@@ -1,0 +1,32 @@
+#include <iostream>
+#include <functional>
+#include <vector>
+
+// Функция ускорения, которую мы хотим проинтегрировать
+double acceleration(double t) {
+    // Замените это своей функцией ускорения
+    return 9.8; // Пример: ускорение свободного падения (м/с^2)
+}
+
+// Функция для численного интегрирования методом трапеций
+double trapezoidalIntegration(const std::function<double(double)>& f, double a, double b, int n) {
+    double h = (b - a) / n; // Шаг интегрирования
+    double integral = (f(a) + f(b)) / 2.0;
+    for (int i = 1; i < n; ++i) {
+        integral += f(a + i * h);
+    }
+    integral *= h;
+    return integral;
+}
+
+int main() {
+    double a = 0; // Начальное время
+    double b = 10; // Конечное время
+    int n = 1000; // Количество разбиений интервала
+
+    double result = trapezoidalIntegration(acceleration, a, b, n);
+    std::cout << "Интеграл ускорения: " << result << " м/с" << std::endl;
+
+    return 0;
+}
+

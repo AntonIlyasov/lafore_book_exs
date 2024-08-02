@@ -1,0 +1,17 @@
+[
+{
+  "directory": "/home/anton202/lafore_book_exs/elevator/build",
+  "command": "/usr/bin/c++    -g   -o CMakeFiles/elev.dir/elev_app.cpp.o -c /home/anton202/lafore_book_exs/elevator/elev_app.cpp",
+  "file": "/home/anton202/lafore_book_exs/elevator/elev_app.cpp"
+},
+{
+  "directory": "/home/anton202/lafore_book_exs/elevator/build",
+  "command": "/usr/bin/c++    -g   -o CMakeFiles/elev.dir/elev.cpp.o -c /home/anton202/lafore_book_exs/elevator/elev.cpp",
+  "file": "/home/anton202/lafore_book_exs/elevator/elev.cpp"
+},
+{
+  "directory": "/home/anton202/lafore_book_exs/elevator/build",
+  "command": "/usr/bin/c++    -g   -o CMakeFiles/elev.dir/msoftcon.cpp.o -c /home/anton202/lafore_book_exs/elevator/msoftcon.cpp",
+  "file": "/home/anton202/lafore_book_exs/elevator/msoftcon.cpp"
+}
+]

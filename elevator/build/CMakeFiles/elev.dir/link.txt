@@ -1,0 +1,1 @@
+/usr/bin/c++  -g  -rdynamic CMakeFiles/elev.dir/elev_app.cpp.o CMakeFiles/elev.dir/elev.cpp.o CMakeFiles/elev.dir/msoftcon.cpp.o  -o elev 

@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/anton202/lafore_book_exs/elevator/elev.cpp
+elev.h
+/home/anton202/lafore_book_exs/elevator/elev.h
+
+/home/anton202/lafore_book_exs/elevator/elev.h
+elev_app.h
+/home/anton202/lafore_book_exs/elevator/elev_app.h
+msoftcon.h
+/home/anton202/lafore_book_exs/elevator/msoftcon.h
+iostream
+-
+iomanip
+-
+stdlib.h
+-
+
+/home/anton202/lafore_book_exs/elevator/elev_app.cpp
+elev.h
+/home/anton202/lafore_book_exs/elevator/elev.h
+
+/home/anton202/lafore_book_exs/elevator/elev_app.h
+
+/home/anton202/lafore_book_exs/elevator/msoftcon.h
+math.h
+-
+
